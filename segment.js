@@ -24,9 +24,9 @@ function segment(name, level, chr) {
 }
 function unsegment(name, level, chr) {
   name = String(name||'');
-  var pre = name.substr(0, level * 2);
-  name = name.substr((level * 2));
-  return pre.split(chr).join('')+name;
+  var pre = name.substr(0, level * 2).split(chr).join('');
+  var rst = name.substr(level * 2);
+  return [pre, rst].join('');
 }
 
 Segment.prototype._set = function(name, value, callback) {
@@ -48,7 +48,7 @@ Segment.prototype._list = function(name, callback) {
     if (err) return callback(err);
     if (!val || !val.values) return callback(new Error('bad data'));
     val.values = val.values.map(function(item) {
-      return unsegment(item, self.level, self.chr);
+      return unsegment(item, self.level, self.segment);
     });
     callback(null, val);
   });
