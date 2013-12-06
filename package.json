@@ -1,6 +1,6 @@
 {
   "name": "kvs-segmentname",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "segments the name to a degree transparently",
   "main": "segment.js",
   "scripts": {
